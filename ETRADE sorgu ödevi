@@ -1,0 +1,14 @@
+-- Soru 1. ORDERSALES Tablosu üzerinde hangi şehirde ne kadarlık satış yapıldığı bilgisini çeken sql sorgusunuz yazınız.
+select  CITY, SUM(LINETOTAL) from SALEORDERS group by CITY order by CITY
+
+--Soru 2. SALEORDERS Tablosu şehirlere göre hangi ayda ne kadarlık satış yapıldığı bilgisini çeken sql sorgusunu yazınız
+select  CITY,MONTH_,SUM(LINETOTAL) 'ToplamSatis' from SALEORDERS group by CITY,MONTH_ order by CITY
+
+--Soru 3. Her ilin haftanın en çok hangi gününde satış yaptığını öğrenip ona göre şehir ve günlere özel kampanya yapmak istiyoruz. Şehirlerin haftanın günlerine göre ne kadarlık satış yaptığı bilgisini şekildeki gibi getiren sorguyu yazınız
+select  CITY,DAYOFWEEK_,SUM(LINETOTAL) 'ToplamSatis' from SALEORDERS group by CITY,DAYOFWEEK_ order by CITY,DAYOFWEEK_
+
+-- Soru 4. Her ilin haftanın en çok hangi gününde satış yaptığını öğrenip ona göre şehir ve günlere özel kampanya yapmak istiyoruz. Şehirlerin haftanın günlerine göre ne kadarlık satış yaptığı bilgisini şekildeki gibi getiren sorguyu yazınız. 
+select CITY,(Select Sum(LINETOTAL) from SALEORDERS Where CITY=s.CITY and DAYOFWEEK_(01.PZT)) as PAZARTESİ from SALEORDERS as s group by CITY 
+
+ --SORU 5. Her ilin en çok satan ilk 5 kategorisini şekildeki gibi getiren sorguyu yazınız.
+select s.CITY,s.CATEGORY1,Sum(s.LINETOTAL) as 'Toplam Satis' from  SALEORDERS as s group by s.CITY,s.CATEGORY1 order by s.CITY,s.CATEGORY1

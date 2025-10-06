@@ -1,0 +1,47 @@
+--DECLARE @sayi int; -- değer tanımlamak istersek declare kullanırız ve değişken ismi önüne @işareti kullanılır.
+--DECLARE @isim varchar(50)='Ali Burak'; -- bu şekilde de değer atanabilir.
+--DECLARE @gender char(2)='E';
+--DECLARE @number float; 
+--DECLARE @deger bit; --bool sql de bit olarak geçer. 
+--set @deger=1;
+
+select @number=3.70; -- select de değer atamayı sağlar.
+
+--set @sayi=1; -- set değer atamak ve değiştirmek için kullanılır.
+--print @isim;-- print komut satırına yazdırmak için kullanılır.
+--print @number;
+--print @gender;
+--print @number;
+--print @deger;
+select @isim; --tablo kolonu gibi gözükür;
+
+declare @sayi int=10; 
+
+if @sayi>10 
+begin --süslü parantez açma anlamına gelir
+print 'Sayi 10 dan buyuk';
+print'Kosul saglandi'
+end -- süslü parantez kapatma anlamına gelir
+else if @sayi=10
+print 'Sayi 10 a eşittir.'
+else 
+print'Sayi 10dan daha küçük';
+
+
+declare @sayi1 int; 
+declare @sayi2 int; 
+declare @sayi3 int; 
+set @sayi1=40;
+set @sayi2=50;
+set @sayi3=30;
+
+if @sayi1>@sayi2 and @sayi1>@sayi3
+begin 
+print'Sayi 1 en büyük sayi';
+end
+else if @sayi2>@sayi1 and @sayi2>@sayi3
+print 'Sayi 2 en büyük ';
+
+else 
+print 'Sayi 3 en büyük sayi';
+

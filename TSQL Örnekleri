@@ -45,3 +45,29 @@ print 'Sayi 2 en büyük ';
 else 
 print 'Sayi 3 en büyük sayi';
 
+declare @sayi4 int; 
+set @sayi4=11;
+
+
+if @sayi4<2
+select @sayi4
+
+else if @sayi4>=3 and @sayi4<=7
+begin
+declare @kare int; 
+set @kare=@sayi4*@sayi4
+select @kare;
+end
+else if @sayi4>=8 and @sayi4<=10
+begin
+declare @küp int; 
+set @küp=@sayi4*@sayi4*@sayi4;
+select @küp;
+end
+else if @sayi4>10
+begin
+declare @number int;
+set @number= @sayi4*2;
+select @number as 'Değer'
+end
+

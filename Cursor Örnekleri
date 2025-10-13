@@ -1,0 +1,42 @@
+create database Okul
+
+
+
+create table Ogrenciler
+(
+Ogr_No int,
+Ogr_Adi nvarchar(100),
+Ogr_Soyadi nvarchar(100)
+)
+
+insert into Ogrenciler values (1,'Ali Burak','Öztürk')
+
+insert into Ogrenciler values (1,'Ayberk','Aral')
+
+select *from Ogrenciler
+
+declare @ogrno int; 
+
+declare @ogrAd nvarchar(100);
+declare @ogrsoyad nvarchar(100);
+declare @isim nvarchar(100);
+
+declare crs CURSOR 
+for Select o.Ogr_No,o.Ogr_Adi,o.Ogr_Soyadi from  Ogrenciler as o 
+open crs 
+fetch next from crs Into @ogrno,@ograd,@ogrsoyad
+while(@@FETCH_STATUS=0)
+begin 
+select @ogrAd=Ogr_Adi from Ogrenciler 
+where Ogr_Adi=@ogrAd
+if(@ogrno %2=0)
+set  @isim=@ogrAd+ '--'+@ogrsoyad
+
+else 
+set @isim=@ogrAd+ '**'+@ogrsoyad
+print @isim
+
+fetch next from crs Into @ogrno,@ograd,@ogrsoyad
+end
+close crs 
+deallocate crs
